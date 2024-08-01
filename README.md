@@ -4,7 +4,7 @@ This Tip Calculator web app allows users to easily calculate the appropriate tip
 
 # Features
 
-. **Dynamic Tip Calculation**: Enter your total bill amount and select a tip percentage to instantly see the calculated tip and total bill.
+. **Dynamic Tip Calculation**: Enter your total bill amount and select a tip percentage to instantly see the calculated tip and total bill.<br>
 . **Bill Splitting:** Option to split the bill among multiple people, showing individual shares.
 . **Tax Calculation:** Include tax in the calculations for more accurate results.
 . **User-Friendly Interface:** Simple and intuitive UI for a seamless user experience.
