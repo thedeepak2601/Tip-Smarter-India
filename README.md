@@ -19,8 +19,8 @@ This Tip Calculator web app allows users to easily calculate the appropriate tip
 
 # Technologies Used
 
-. HTML
-. CSS
+. HTML<br>
+. CSS<br>
 . JavaScript
 
 # Getting Started
