@@ -35,6 +35,7 @@ Open the index.html file in your web browser.
 # Contributions
 
 Contributions are welcome! Please open an issue or submit a pull request for any improvements or features you'd like to see.
+If you contribution or any feedback then contact us on this https://thedeepak2601.github.io/#contact
 
 
 # License
