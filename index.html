@@ -1,0 +1,148 @@
+<html><head><base href="https://thedeepak2601.github.io">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tip Smarter India - Rupee Tip Calculator</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #faf3e0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .calculator {
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        padding: 30px;
+        width: 350px;
+    }
+    h1 {
+        text-align: center;
+        color: #e67e22;
+        margin-bottom: 20px;
+    }
+    label {
+        display: block;
+        margin-top: 15px;
+        color: #34495e;
+        font-weight: bold;
+    }
+    input[type="number"], select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #bdc3c7;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+    button {
+        background-color: #e67e22;
+        color: white;
+        border: none;
+        padding: 12px;
+        width: 100%;
+        margin-top: 25px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-size: 18px;
+        border-radius: 5px;
+    }
+    button:hover {
+        background-color: #d35400;
+    }
+    #result {
+        margin-top: 25px;
+        font-weight: bold;
+        background-color: #ecf0f1;
+        padding: 15px;
+        border-radius: 5px;
+    }
+    .rupee-symbol::before {
+        content: '₹';
+        margin-right: 5px;
+    }
+</style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Tip Smarter India</h1>
+        <label for="bill">Bill Amount (₹):</label>
+        <input type="number" id="bill" step="1" min="0" required class="rupee-symbol">
+        
+        <label for="tipPercentage">Tip Percentage:</label>
+        <select id="tipPercentage">
+            <option value="0.05">5%</option>
+            <option value="0.10">10%</option>
+            <option value="0.15">15%</option>
+            <option value="0.20">20%</option>
+            <option value="custom">Custom</option>
+        </select>
+        
+        <div id="customTipContainer" style="display: none;">
+            <label for="customTip">Custom Tip Percentage:</label>
+            <input type="number" id="customTip" step="0.1" min="0" max="100">
+        </div>
+        
+        <label for="split">Split between:</label>
+        <input type="number" id="split" value="1" min="1" step="1">
+        
+        <label for="tax">GST Percentage:</label>
+        <input type="number" id="tax" value="5" min="0" max="28" step="0.1">
+        
+        <button onclick="calculateTip()">Calculate Tip</button>
+        
+        <div id="result"></div>
+        <h2>MADE BY <a href="https://thedeepak2601.github.io" target="_blank">DEEPAK KUMAR</a></h2>
+
+    </div>
+
+    <script>
+        const tipPercentageSelect = document.getElementById('tipPercentage');
+        const customTipContainer = document.getElementById('customTipContainer');
+        const customTipInput = document.getElementById('customTip');
+
+        tipPercentageSelect.addEventListener('change', function() {
+            if (this.value === 'custom') {
+                customTipContainer.style.display = 'block';
+            } else {
+                customTipContainer.style.display = 'none';
+            }
+        });
+
+        function calculateTip() {
+            const bill = parseFloat(document.getElementById('bill').value);
+            let tipPercentage = parseFloat(document.getElementById('tipPercentage').value);
+            const split = parseInt(document.getElementById('split').value);
+            const taxPercentage = parseFloat(document.getElementById('tax').value) / 100;
+
+            if (isNaN(bill) || bill <= 0) {
+                alert('Please enter a valid bill amount.');
+                return;
+            }
+
+            if (tipPercentageSelect.value === 'custom') {
+                tipPercentage = parseFloat(customTipInput.value) / 100;
+                if (isNaN(tipPercentage) || tipPercentage < 0) {
+                    alert('Please enter a valid custom tip percentage.');
+                    return;
+                }
+            }
+
+            const taxAmount = bill * taxPercentage;
+            const tipAmount = bill * tipPercentage;
+            const totalBill = bill + tipAmount + taxAmount;
+            const perPersonAmount = totalBill / split;
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <p>Tip: ₹${tipAmount.toFixed(2)}</p>
+                <p>GST: ₹${taxAmount.toFixed(2)}</p>
+                <p>Total Bill: ₹${totalBill.toFixed(2)}</p>
+                <p>Per Person: ₹${perPersonAmount.toFixed(2)}</p>
+            `;
+        }
+    </script>
+</body></html>
