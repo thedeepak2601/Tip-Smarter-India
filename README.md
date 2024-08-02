@@ -28,7 +28,9 @@ This Tip Calculator web app allows users to easily calculate the appropriate tip
 To run the project locally:
 
 Clone the repository:
-**Copy code** : git clone https://github.com/your-username/tip-calculator-web-app.git
+**Copy code** : 
+```bash
+  git clone https://github.com/your-username/tip-calculator-web-app.git
 
 Open the index.html file in your web browser.
 
